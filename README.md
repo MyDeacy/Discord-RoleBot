@@ -1,6 +1,6 @@
 # Discord-RoleBot
 
-# Usage
+## Usage
 Config.ktの内容を各自編集し、``gradle run``  
 生成されたJarをコマンドラインで実行すると  
 Botが起動します。  
@@ -9,5 +9,5 @@ Botが起動します。
 役職を付与するためのメッセージとリアクションが送信されます。  
   
 　  
-# Contact
+## Contact
 issues 或いは <https://twitter.com/MyDeacy>まで
