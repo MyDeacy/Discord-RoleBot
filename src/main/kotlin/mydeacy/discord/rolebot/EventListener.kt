@@ -10,12 +10,11 @@ import sx.blah.discord.handle.impl.events.guild.channel.message.reaction.Reactio
 import sx.blah.discord.handle.impl.obj.ReactionEmoji
 
 
-class EventListener(val client: IDiscordClient) {
+class EventListener(private val client: IDiscordClient) {
 
     @EventSubscriber
-    fun onReady(event: ReadyEvent) {
-        println("Bot is ready!!")
-    }
+    fun onReady(event: ReadyEvent) = println("Bot is ready!!")
+
 
     @EventSubscriber
     fun onReceiveMessage(event: MessageReceivedEvent) {
@@ -31,27 +30,22 @@ class EventListener(val client: IDiscordClient) {
     }
 
     @EventSubscriber
-    fun onAddReaction(event: ReactionAddEvent) {
-        reactionProcess(event)
-    }
+    fun onAddReaction(event: ReactionAddEvent) = reactionProcess(event)
 
     @EventSubscriber
-    fun onRemoveReaction(event: ReactionRemoveEvent){
-        reactionProcess(event)
-    }
+    fun onRemoveReaction(event: ReactionRemoveEvent) = reactionProcess(event)
 
-
-    fun reactionProcess(event: ReactionEvent) {
+    private fun reactionProcess(event: ReactionEvent) {
         val message = event.message
         val id = message.author.longID
         if (id != client.ourUser.longID) return
-        if(event.user.longID == client.ourUser.longID) return
+        if (event.user.longID == client.ourUser.longID) return
         Config.roles.forEachIndexed { index: Int, role: String ->
             if (Config.roleMessage.replace("%role", role) == message.content) {
                 val user = event.user
                 if (event is ReactionAddEvent) {
                     user.addRole(client.getRoleByID(Config.roleIds[index]))
-                }else{
+                } else {
                     user.removeRole(client.getRoleByID(Config.roleIds[index]))
                 }
             }
