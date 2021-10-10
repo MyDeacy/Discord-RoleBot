@@ -1,7 +1,7 @@
 # Discord-RoleBot
 
 ## Usage
-Config.ktの内容を各自編集し、``gradle run``  
+Config.ktの内容を各自編集し、``gradlew.bat``を実行  
 生成されたJarをコマンドラインで実行すると  
 Botが起動します。  
 　  
