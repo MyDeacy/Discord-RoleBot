@@ -1,5 +1,7 @@
 # Discord-RoleBot
 
+## これ今動きません。代替のものを使われるのをお勧めしますｍｍ
+
 ## Usage
 Config.ktの内容を各自編集し、``gradlew.bat``を実行  
 生成されたJarをコマンドラインで実行すると  
